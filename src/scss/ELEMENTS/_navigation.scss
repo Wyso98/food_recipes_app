@@ -1,0 +1,33 @@
+@use "../SETTINGS/colors";
+
+.navigation-container{
+  background-color: colors.$nav-color;
+  .navigation-box{
+    font-size: 1.6rem;
+    height: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .mainLogo{
+      font-size: 3rem;
+      margin: 0;
+    }
+    .nav-rightSide{
+      height: 100%;
+      display: flex;
+      flex-direction: row;
+      .nav_element{
+        height: 100%;
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+        &:hover{
+          font-weight: bold;
+        }
+      }
+      .active_element{
+        background-color: colors.$primary-color;
+      }
+    }
+  }
+}
