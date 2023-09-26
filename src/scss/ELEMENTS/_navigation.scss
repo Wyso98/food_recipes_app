@@ -2,6 +2,10 @@
 
 .navigation-container{
   background-color: colors.$nav-color;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   .navigation-box{
     font-size: 1.6rem;
     height: 5rem;

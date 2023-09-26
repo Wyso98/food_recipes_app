@@ -1,0 +1,25 @@
+@use "../SETTINGS/colors";
+
+.container-background{
+  background-color: colors.$container-color;
+  .entryPage{
+    margin-top: 5rem;
+    min-height: 100vh;
+    .header{
+      display: flex;
+      justify-content: center;
+      .header_box{
+        width: 80%;
+        display: flex;
+        align-items: center;
+        .header_text{
+          font-weight: bold;
+        }
+        .header_image{
+          width: 450px;
+          height: 450px;
+        }
+      }
+    }
+  }
+}

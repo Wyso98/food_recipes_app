@@ -14,10 +14,12 @@ function App() {
   return (
           <HashRouter>
               <Navigation/>
-              <Routes>
-                  <Route path={"/"} element={<EntryPage/>}/>
-                  <Route path={"/searchForRecipe"} element={<BrowserPage/>}/>
-              </Routes>
+              <div className={"pageBackground"}>
+                  <Routes>
+                      <Route path={"/"} element={<EntryPage/>}/>
+                      <Route path={"/searchForRecipe"} element={<BrowserPage/>}/>
+                  </Routes>
+              </div>
           </HashRouter>
   )
 }
