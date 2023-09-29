@@ -1,7 +1,7 @@
 import React from "react";
 import {RecipeElement} from "./RecipeElement.jsx";
 
-export const BrowserPage = ({arrayOfRecipes}) =>{
+export const BrowserPage = ({arrayOfRecipes, formSearch, searchForRecipeInput, runBrowser}) =>{
     const makeUniqueID = ()=>{
         return Date.now() + Math.random().toString(36).substring(7);
     }
@@ -19,8 +19,10 @@ export const BrowserPage = ({arrayOfRecipes}) =>{
     return(
         <main className={"container container-background-browser"}>
             <div className={"browser"}>
-                <form>
-
+                <form className={"search_form"} onSubmit={runBrowser}>
+                    <label className={"heading_search_input_text"} htmlFor={"search_input_text"}>Write a recipe ingredient</label><br/>
+                    <input className={"search_input_text"} type={"text"} id={"search_input_text"} value={formSearch} onChange={(event) => searchForRecipeInput(event)}/>
+                    <button type={"submit"}>Search for recipes</button>
                 </form>
                 <div className={"recipes_box"}>
                     {showRecipes()}
