@@ -8,6 +8,16 @@ import {BrowserPage} from "./BrowserPage.jsx";
 function App() {
 
     const [arrayOfRecipes, setArrayOfRecipes] = useState([]);
+    const [formSearch, setFormSearch] = useState("")
+
+    const searchForRecipeInput = (event)=>{
+        setFormSearch(event.target.value)
+    }
+
+    const runBrowser = (event) =>{
+        event.preventDefault()
+        getData(setArrayOfRecipes, formSearch)
+    }
 
     useEffect(() => {
         getData(setArrayOfRecipes)
@@ -19,7 +29,7 @@ function App() {
               <div className={"pageBackground"}>
                   <Routes>
                       <Route path={"/"} element={<EntryPage/>}/>
-                      <Route path={"/searchForRecipe"} element={<BrowserPage arrayOfRecipes={arrayOfRecipes}/>}/>
+                      <Route path={"/searchForRecipe"} element={<BrowserPage arrayOfRecipes={arrayOfRecipes} formSearch={formSearch} searchForRecipeInput={searchForRecipeInput} runBrowser={runBrowser}/>}/>
                   </Routes>
               </div>
           </HashRouter>
