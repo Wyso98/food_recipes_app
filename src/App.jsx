@@ -9,6 +9,7 @@ function App() {
 
     const [arrayOfRecipes, setArrayOfRecipes] = useState([]);
     const [formSearch, setFormSearch] = useState("")
+    const [message, setMessage] = useState("There you will se results of your search")
 
     const searchForRecipeInput = (event)=>{
         setFormSearch(event.target.value)
@@ -16,12 +17,9 @@ function App() {
 
     const runBrowser = (event) =>{
         event.preventDefault()
+        setMessage("Wait for your data")
         getData(setArrayOfRecipes, formSearch)
     }
-
-    useEffect(() => {
-        getData(setArrayOfRecipes)
-    }, []);
 
   return (
           <HashRouter>
@@ -29,7 +27,7 @@ function App() {
               <div className={"pageBackground"}>
                   <Routes>
                       <Route path={"/"} element={<EntryPage/>}/>
-                      <Route path={"/searchForRecipe"} element={<BrowserPage arrayOfRecipes={arrayOfRecipes} formSearch={formSearch} searchForRecipeInput={searchForRecipeInput} runBrowser={runBrowser}/>}/>
+                      <Route path={"/searchForRecipe"} element={<BrowserPage arrayOfRecipes={arrayOfRecipes} formSearch={formSearch} message={message} searchForRecipeInput={searchForRecipeInput} runBrowser={runBrowser}/>}/>
                   </Routes>
               </div>
           </HashRouter>
