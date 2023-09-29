@@ -7,8 +7,10 @@ import {BrowserPage} from "./BrowserPage.jsx";
 
 function App() {
 
+    const [arrayOfRecipes, setArrayOfRecipes] = useState([]);
+
     useEffect(() => {
-        getData()
+        getData(setArrayOfRecipes)
     }, []);
 
   return (
@@ -17,7 +19,7 @@ function App() {
               <div className={"pageBackground"}>
                   <Routes>
                       <Route path={"/"} element={<EntryPage/>}/>
-                      <Route path={"/searchForRecipe"} element={<BrowserPage/>}/>
+                      <Route path={"/searchForRecipe"} element={<BrowserPage arrayOfRecipes={arrayOfRecipes}/>}/>
                   </Routes>
               </div>
           </HashRouter>
