@@ -1,13 +1,13 @@
 import React from "react";
 import {RecipeElement} from "./RecipeElement.jsx";
 
-export const BrowserPage = ({arrayOfRecipes, formSearch, searchForRecipeInput, runBrowser}) =>{
+export const BrowserPage = ({arrayOfRecipes, formSearch, searchForRecipeInput, runBrowser, message}) =>{
     const makeUniqueID = ()=>{
         return Date.now() + Math.random().toString(36).substring(7);
     }
     const showRecipes = () =>{
         if(arrayOfRecipes.length === 0){
-            return <p>Wait a second for your data</p>
+            return <p style={{fontSize: "1.4rem"}}>{message}</p>
         }else{
             console.log(arrayOfRecipes)
             return arrayOfRecipes.map(item =>{
