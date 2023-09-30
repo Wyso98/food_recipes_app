@@ -1,6 +1,6 @@
 import {basicURL, API_KEY, API_ID} from "./API-values.jsx";
 
-export const getData = (settingFunction, query = "",) =>{
+export const getData = (settingFunction, query = "", nextLinkSetting) =>{
 
     const searchParams = new URLSearchParams({
         app_id: API_ID,
@@ -9,13 +9,15 @@ export const getData = (settingFunction, query = "",) =>{
         q: query
     })
 
-    console.log(searchParams.toString())
-
     fetch(`${basicURL}?${searchParams.toString()}`,{
         method: "GET"
     })
     .then(response => response.json())
-    .then(data => settingFunction(data.hits))
-    .then(data => console.log(data))
+    .then(data => {
+        settingFunction(data.hits);
+        nextLinkSetting(data._links.next.href)
+        console.log(data._links.next.href)
+    })
+
     .catch(error => console.log(error))
 }
