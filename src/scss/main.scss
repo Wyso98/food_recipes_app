@@ -1,8 +1,8 @@
-@use "GENERIC/reset";
-@use "SETTINGS/colors";
+@use "generic/reset";
+@use "settings/colors";
 
-@use "ELEMENTS/navigation";
-@use "ELEMENTS/entryPage";
-@use "ELEMENTS/app";
-@use "ELEMENTS/browserPage";
-@use "ELEMENTS/recipeElement";
+@use "elements/navigation";
+@use "elements/entryPage";
+@use "elements/app";
+@use "elements/searchPage";
+@use "elements/recipeElement";
