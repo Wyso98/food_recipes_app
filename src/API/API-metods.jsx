@@ -14,10 +14,26 @@ export const getData = (settingFunction, query = "", nextLinkSetting) =>{
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data.hits)
         settingFunction(data.hits);
         nextLinkSetting(data._links.next.href)
         console.log(data._links.next.href)
     })
 
     .catch(error => console.log(error))
+}
+
+export const getDataInfiniteScroll = (link, settingFunction, nextLinkSetting) =>{
+
+    let test = []
+
+    fetch(link, {
+      method: "GET"
+    })
+    .then(response => response.json())
+    .then(data => {
+        settingFunction(prevState => [...prevState, ...data.hits])
+        nextLinkSetting(data._links.next.href)
+        }
+    )
 }

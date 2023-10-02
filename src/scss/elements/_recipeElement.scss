@@ -1,10 +1,10 @@
-@use "../SETTINGS/colors";
+@use "../settings/colors";
 
 .recipe_element{
   border: solid colors.$border-recipes 3px;
   border-radius: 2rem;
   margin-bottom: 2rem;
-  padding: 20px;
+  padding: 40px;
   font-size: 1.4rem;
   transition: background-color 0.4s;
   .recipe_image{
