@@ -1,0 +1,8 @@
+@use "../settings/colors";
+
+.recipePage{
+  margin-top: 5rem;
+  min-height: calc(100vh - 5rem);
+  font-size: 20px;
+  background-color: colors.$container-color;
+}

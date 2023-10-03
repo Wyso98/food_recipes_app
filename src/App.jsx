@@ -4,6 +4,8 @@ import {HashRouter, Route, Routes} from "react-router-dom";
 import {EntryPage} from "./EntryPage.jsx";
 import {Navigation} from "./Navigation.jsx";
 import {SearchPage} from "./SearchPage.jsx";
+import {RecipeElement} from "./RecipeElement.jsx";
+import {RecipePage} from "./RecipePage.jsx";
 
 function App() {
     const [arrayOfRecipes, setArrayOfRecipes] = useState([]);
@@ -15,6 +17,7 @@ function App() {
                   <Routes>
                       <Route path={"/"} element={<EntryPage/>}/>
                       <Route path={"/searchForRecipe"} element={<SearchPage arrayOfRecipes={arrayOfRecipes} setArrayOfRecipes={setArrayOfRecipes}/>}/>
+                      <Route path={"/searchForRecipe/:recipeID"} element={<RecipePage/>}/>
                   </Routes>
               </div>
           </HashRouter>

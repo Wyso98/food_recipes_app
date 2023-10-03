@@ -37,3 +37,19 @@ export const getDataInfiniteScroll = (link, settingFunction, nextLinkSetting) =>
         }
     )
 }
+
+export const getDataForID = (id, settingProductData) => {
+
+    const searchParams = new URLSearchParams({
+        app_id: API_ID,
+        app_key: API_KEY,
+        type: "public",
+    })
+
+    fetch(`https://api.edamam.com/api/recipes/v2/${id}?${searchParams.toString()}`, {
+        method: "GET",
+    })
+    .then(response => response.json())
+    .then(data => settingProductData(data.recipe))
+    .catch(error => console.log(error))
+}
