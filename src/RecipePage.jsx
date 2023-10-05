@@ -10,14 +10,32 @@ export const RecipePage = () =>{
         getDataForID(recipeID, setRecipeData)
     }, []);
 
-    const showData = () =>{
-
-    }
-
     return(
         (recipeData === "" ? <div className={"recipePage container"} style={{paddingTop: 20}}>Dane się ładują</div> :
             <div className={"container recipePage"}>
-                <p>This recipe has {recipeData.calories.toFixed(0)} calories</p>
+                <h2 className={"recipePage_heading col-12"}>{recipeData.label}</h2>
+                <div className={"recipePage_mainInfo row"}>
+                    <img className={"imageOfMeal col-12 col-sm-6 col-md-5"} src={recipeData.images.REGULAR.url} alt={"image of meal"}/>
+                    <div className={"recipePage_mainInfo-background col-12 col-sm-6 col-md-5"}>
+                        <div className={"recipePage_mainInfo-element"}>
+                            Meal type: {recipeData.mealType.map((item, index) => <span key={index}>{`${item} `}</span>)}
+                        </div>
+                        <div className={"recipePage_mainInfo-element"}>
+                             Dish type: {recipeData.dishType.map((item, index) => <span key={index}>{`${item} `}</span>)}
+                        </div>
+                        <div className={"recipePage_mainInfo-element"}>
+                            Diet type: {recipeData.dietLabels.map((item, index) => <span key={index}>{`${item} `}</span>)}
+                        </div>
+                        <div className={"recipePage_mainInfo-element"}>
+                            Cuisine Type: {recipeData.cuisineType.map((item, index) => <span key={index}>{`${item} `}</span>)}
+                        </div>
+                    </div>
+                </div>
+
+                <ul className={"col-12"}>
+
+                </ul>
+                <a className={"recipePage_button"} href={recipeData.url}>Click to see recipe directions</a>
             </div>
         )
     )
