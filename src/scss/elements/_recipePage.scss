@@ -5,4 +5,38 @@
   min-height: calc(100vh - 5rem);
   font-size: 20px;
   background-color: colors.$container-color;
+  padding:1rem 2% 0 2%;
+  .recipePage_heading{
+    font-size: 4rem;
+  }
+  .recipePage_mainInfo{
+    justify-content: space-around;
+    .imageOfMeal{
+      border-radius: 2rem;
+      border: 0.5rem solid colors.$border-recipes;
+      padding: 0;
+    }
+    .recipePage_mainInfo-background{
+      border-radius: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      .recipePage_mainInfo-element{
+        margin-top: 1px;
+        margin-bottom: 1px;
+        border: 1px solid colors.$border-1;
+        border-radius: 1.5rem;
+        padding: 0.7rem;
+        background: linear-gradient(315deg, #7dce5f 0%, #e9cb0c 100%);
+      }
+    }
+  }
+  .recipePage_button{
+    display: inline-block;
+    padding: 1rem;
+    background-color: colors.$button1-color;
+    border: solid 2px colors.$border-button;
+    box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+    border-radius: 1.5rem;
+  }
 }

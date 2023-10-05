@@ -1,4 +1,5 @@
 import {basicURL, API_KEY, API_ID} from "./API-values.jsx";
+import {compile} from "sass";
 
 export const getData = (settingFunction, query = "", nextLinkSetting) =>{
 
@@ -50,6 +51,9 @@ export const getDataForID = (id, settingProductData) => {
         method: "GET",
     })
     .then(response => response.json())
-    .then(data => settingProductData(data.recipe))
+    .then(data => {
+        settingProductData(data.recipe)
+        console.log(data.recipe)
+    })
     .catch(error => console.log(error))
 }
