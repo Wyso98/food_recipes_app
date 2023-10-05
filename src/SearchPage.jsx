@@ -24,7 +24,10 @@ export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes}) =>{
                     pageStart={0}
                     loadMore={()=>getDataInfiniteScroll(nextLink, setArrayOfRecipes, setNextLink)}
                     hasMore={true}
-                    loader={<div>Loading ...</div>}>
+                    loader={
+                        <div className="spinner-border" role="status">
+                            <span className="sr-only"></span>
+                        </div>}>
                     {arrayOfRecipes.map((item, index) =>{
                         const id = item.recipe.uri.split('#recipe')[1];
                     return <RecipeElement key={id} id={id} item={item}/>
