@@ -1,0 +1,39 @@
+@use "../settings/colors";
+
+.search_form{
+  margin: 5rem;
+  padding-top: 5rem;
+  font-size: 1.4rem;
+  .search_input_text{
+    font-size: 1.4rem;
+    height: 5rem;
+    padding-left: 2rem;
+    border-radius: 3rem;
+    border: 2px solid colors.$border-1;
+    &:hover{
+      cursor: pointer;
+    }
+  }
+  .search_form-box{
+    background-color: white;
+    border-radius: 2rem;
+    border: 2px solid black;
+    .search_form-box-element{
+      position: relative;
+      .search_form-heading{
+        background-color: grey;
+        border-radius: 2rem;
+        padding: 2rem;
+      }
+      .search_form-listOfCheckboxes{
+        width: 100%;
+        position: absolute;
+        top: 7rem;
+        left: 1px;
+        background-color: lightgrey;
+        border-radius: 2rem;
+        padding: 1rem;
+      }
+    }
+  }
+}
