@@ -1,6 +1,7 @@
 import React from "react";
 
 export const EntryPage = ()=>{
+
     return(
             <main className={"container container-background-entry"}>
                 <div className={"entryPage"}>
