@@ -35,7 +35,15 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
         "mustard-free", "no-oil-added", "paleo", "peanut-free", "pescatarian", "low-fat-abs", "pork-free", "read-meat-free", "sehellfish-free", "sesame-free", "soy-free",
         "sugar-conscious", "sulfite-free", "tree-nut-free", "vegan", "vegetarian", "wheat-free"];
 
-    const dietOption = ["balanced", "high-fiber", "high-protein", "low-carb", "low-fat", "low-sodium"];
+    const dietOptions = ["balanced", "high-fiber", "high-protein", "low-carb", "low-fat", "low-sodium"];
+
+    const cuisineOptions = ["American", "Asian", "British", "Caribbean", "Central%20Europe","Eastern%20Europe", "Chinese","French", "Indian","Italian","Japanese", "Kosher",
+    "Mediterranean", "Mexican", "Middle%20Eastern", "Nordic", "South%20American", "South%20East%20Asian"]
+
+    const mealTypeOptions = ["Breakfast", "Dinner", "Lunch", "Snack", "Teatime"]
+
+    const dishTypeOptions = ["Biscuits%20and%20cookies", "Bread", "Cereals", "Condiments%20and%20sauces", "Desserts", "Drinks","Main%20course","Pancake", "Preps", "Preserve", "Salad",
+    "Sandwiches", "Side%20dish", "Soup", "Starter", "Sweets"]
 
     return(
         <form className={"search_form row"} onSubmit={runBrowser}>
@@ -66,7 +74,7 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
                         Diet type {formDietCheckboxes.length > 0 ?`- ${formDietCheckboxes.length} selected` : ""}</h3>
                     {showFormDietWindow &&
                         <div className={"search_form-listOfCheckboxes"}>
-                            {dietOption.map((item, index)=>{
+                            {dietOptions.map((item, index)=>{
                                 return (
                                     <div key={index*Math.random()}>
                                         <input key={index*Math.random()} id={item} value={item} type={"checkbox"}
