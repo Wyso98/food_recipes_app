@@ -13,7 +13,7 @@
     justify-content: space-around;
     .imageOfMeal{
       border-radius: 2rem;
-      border: 0.5rem solid colors.$border-recipes;
+      border: 0.3rem solid colors.$nav-color;
       padding: 0;
     }
     .recipePage_mainInfo-background{
@@ -90,7 +90,7 @@
       .recipePage_button{
         display: inline-block;
         padding: 2rem;
-        background-color: colors.$button1-color;
+        background-color: colors.$bg-searchFormButton;
         border: solid 2px colors.$border-button;
         box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
         border-radius: 1.5rem;

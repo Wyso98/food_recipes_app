@@ -43,16 +43,16 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
                     </h3>
                     {showFormHealthWindow &&
                         (<div className={"search_form-listOfCheckboxes"}>
-                        {healthOptions.map((item, index) => {
-                            return(
-                                <div key={index*Math.random()}>
-                                    <input id={item} key={index*Math.random()} value={item} type={"checkbox"}
-                                           onChange={(event) =>changeCheckboxes(formHealthCheckboxes,setFormHealthCheckboxes,event)}
-                                           checked={formHealthCheckboxes.includes(item)}/>
-                                    <label htmlFor={item} key={index*Math.random()}>{item.replace(/-/g, " ")}</label>
-                                </div>
+                            {healthOptions.map((item, index) => {
+                                return(
+                                    <div key={index*Math.random()}>
+                                        <input id={item} key={index*Math.random()} value={item} type={"checkbox"}
+                                               onChange={(event) =>changeCheckboxes(formHealthCheckboxes,setFormHealthCheckboxes,event)}
+                                               checked={formHealthCheckboxes.includes(item)}/>
+                                        <label htmlFor={item} key={index*Math.random()}>{item.replace(/-/g, " ")}</label>
+                                    </div>
                                 )
-                             })}
+                            })}
                         </div>)}
                 </div>
                 <div className={"search_form-box-element col-12 col-lg-4"}>
@@ -64,8 +64,8 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
                                 return (
                                     <div key={index*Math.random()}>
                                         <input key={index*Math.random()} id={item} value={item} type={"checkbox"}
-                                        onChange={event => changeCheckboxes(formDietCheckboxes, setFormDietCheckboxes, event)}
-                                        checked={formDietCheckboxes.includes(item)}/>
+                                               onChange={event => changeCheckboxes(formDietCheckboxes, setFormDietCheckboxes, event)}
+                                               checked={formDietCheckboxes.includes(item)}/>
                                         <label htmlFor={item} key={index*Math.random()}>{item.replace(/-/g, " ")}</label>
                                     </div>
                                 )
