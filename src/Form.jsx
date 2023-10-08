@@ -5,8 +5,10 @@ import {healthOptions, dietOptions, cuisineOptions, dishTypeOptions, mealTypeOpt
 export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     const [formHealthCheckboxes, setFormHealthCheckboxes] = useState([])
     const [formDietCheckboxes, setFormDietCheckboxes] = useState([])
+    const [formCuisineRadio, setFormCuisineRadio] = useState("")
     const [showFormHealthWindow, setShowFormHealthWindow] = useState(false)
     const [showFormDietWindow, setShowFormDietWindow] = useState(false)
+    const [showFormCuisineWindow, setShowFormCuisineWindow] = useState(false)
     const [formSearch, setFormSearch] = useState("")
 
     // funkca dla wyszukiwarki tekstowej
@@ -16,7 +18,7 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     // funkcja uruchamiająca cały formularz
     const runBrowser = (event) =>{
         event.preventDefault()
-        getData(setArrayOfRecipes, formSearch, setNextLink, formHealthCheckboxes, formDietCheckboxes)
+        getData(setArrayOfRecipes, formSearch, formCuisineRadio , setNextLink, formHealthCheckboxes, formDietCheckboxes)
     }
     // ogólna funkcja zmieniająca array checkboxów
     const changeCheckboxes = (arrayOfCheckboxes, settingFunction, event) =>{
@@ -30,6 +32,10 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     const handleToggleFormElementWindow = (settingFunction, stateData) => {
         settingFunction(!stateData);
     }
+    const changeFormStringData = (settingFunction, event) =>{
+        settingFunction(event.target.value)
+    }
+
 
     return(
         <form className={"search_form row"} onSubmit={runBrowser}>
@@ -73,10 +79,35 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
                         </div>}
                 </div>
                 <div className={"search_form-box-element col-12 col-lg-4"}>
-                    <h3 className={"search_form-heading"}>22</h3>
+                    <h3 className={"search_form-heading"} onClick={()=>handleToggleFormElementWindow(setShowFormCuisineWindow, showFormCuisineWindow)}>
+                        Cuisine options {formCuisineRadio ? "- Cuisine selected" : ""}</h3>
+                    {showFormCuisineWindow ?
+                        <div className={"search_form-listOfRadios"}>
+                            <div key={Math.random()}>
+                                <input id={"noneCuisine"} type={"radio"} value={""} name={"cuisineOptions"}
+                                       onChange={(event)=> changeFormStringData(setFormCuisineRadio,event)}
+                                       checked={formCuisineRadio === ""}/>
+                                <label htmlFor={"noneCuisine"}>None</label>
+                            </div>
+                            {cuisineOptions.map((item, index)=>{
+                                return(
+                                    <div key={Math.random()}>
+                                        <input id={item} type={"radio"} value={item} name={"cuisineOptions"} key={Math.random()}
+                                               onChange={(event)=> changeFormStringData(setFormCuisineRadio,event)}
+                                               checked={formCuisineRadio === item}/>
+                                        <label key={Math.random()} htmlFor={item}>{item.replace(/%20/g, " ")}</label>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                        : ""}
+                </div>
+
+                <div className={"search_form-box-element col-12 col-lg-4"}>
+                    <h3 className={"search_form-heading"}>next</h3>
                     <div></div>
                 </div>
-                <button type={"submit"}>Search for recipes</button>
+                <button className={"search_form-submitButton"} type={"submit"}>Search for recipes</button>
             </div>
         </form>
     )
