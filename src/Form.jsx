@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import {getData} from "./API/API-metods.jsx";
+import {healthOptions, dietOptions, cuisineOptions, dishTypeOptions, mealTypeOptions} from "./API/searchOptionsForForm.jsx";
 
 export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     const [formHealthCheckboxes, setFormHealthCheckboxes] = useState([])
@@ -29,21 +30,6 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     const handleToggleFormElementWindow = (settingFunction, stateData) => {
         settingFunction(!stateData);
     }
-
-    const healthOptions = ["alcohol-cocktail", "alcohol-free", "celery-free", "crustacean-free", "dairy-free", "DASH", "egg-free", "fish-free", "fodmap-free",
-        "gluten-free", "immuno-supportive", "keto-friendly", "kidney-friendly", "kosher", "low-fat-abs", "low-potassium", "low-sugar", "lupine-free", "Mediterranean", "mollusk-free",
-        "mustard-free", "no-oil-added", "paleo", "peanut-free", "pescatarian", "low-fat-abs", "pork-free", "read-meat-free", "sehellfish-free", "sesame-free", "soy-free",
-        "sugar-conscious", "sulfite-free", "tree-nut-free", "vegan", "vegetarian", "wheat-free"];
-
-    const dietOptions = ["balanced", "high-fiber", "high-protein", "low-carb", "low-fat", "low-sodium"];
-
-    const cuisineOptions = ["American", "Asian", "British", "Caribbean", "Central%20Europe","Eastern%20Europe", "Chinese","French", "Indian","Italian","Japanese", "Kosher",
-    "Mediterranean", "Mexican", "Middle%20Eastern", "Nordic", "South%20American", "South%20East%20Asian"]
-
-    const mealTypeOptions = ["Breakfast", "Dinner", "Lunch", "Snack", "Teatime"]
-
-    const dishTypeOptions = ["Biscuits%20and%20cookies", "Bread", "Cereals", "Condiments%20and%20sauces", "Desserts", "Drinks","Main%20course","Pancake", "Preps", "Preserve", "Salad",
-    "Sandwiches", "Side%20dish", "Soup", "Starter", "Sweets"]
 
     return(
         <form className={"search_form row"} onSubmit={runBrowser}>
