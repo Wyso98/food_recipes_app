@@ -21,15 +21,15 @@ export const getData = (settingFunction, query = "", nextLinkSetting, healthArra
     fetch(`${basicURL}?${searchParams.toString()}${formOptionsSearch(healthArrayOfCheckboxes, "health")}${formOptionsSearch(dietArrayCheckboxes, "diet")}`,{
         method: "GET"
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data.hits)
-        settingFunction(data.hits);
-        nextLinkSetting(data._links.next.href)
-        console.log(data._links.next.href)
-    })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.hits)
+            settingFunction(data.hits);
+            nextLinkSetting(data._links.next.href)
+            console.log(data._links.next.href)
+        })
 
-    .catch(error => console.log(error))
+        .catch(error => console.log(error))
 }
 
 export const getDataInfiniteScroll = (link, settingFunction, nextLinkSetting) =>{
@@ -37,14 +37,14 @@ export const getDataInfiniteScroll = (link, settingFunction, nextLinkSetting) =>
     let test = []
 
     fetch(link, {
-      method: "GET"
+        method: "GET"
     })
-    .then(response => response.json())
-    .then(data => {
-        settingFunction(prevState => [...prevState, ...data.hits])
-        nextLinkSetting(data._links.next.href)
-        }
-    )
+        .then(response => response.json())
+        .then(data => {
+                settingFunction(prevState => [...prevState, ...data.hits])
+                nextLinkSetting(data._links.next.href)
+            }
+        )
 }
 
 export const getDataForID = (id, settingProductData) => {
@@ -58,10 +58,10 @@ export const getDataForID = (id, settingProductData) => {
     fetch(`https://api.edamam.com/api/recipes/v2/${id}?${searchParams.toString()}`, {
         method: "GET",
     })
-    .then(response => response.json())
-    .then(data => {
-        settingProductData(data.recipe)
-        console.log(data.recipe)
-    })
-    .catch(error => console.log(error))
+        .then(response => response.json())
+        .then(data => {
+            settingProductData(data.recipe)
+            console.log(data.recipe)
+        })
+        .catch(error => console.log(error))
 }

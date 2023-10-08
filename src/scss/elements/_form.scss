@@ -18,22 +18,30 @@
     background-color: white;
     border-radius: 2rem;
     border: 2px solid black;
+    padding-top: 1rem;
     .search_form-box-element{
       position: relative;
       .search_form-heading{
-        background-color: grey;
+        background-color: colors.$bg-formButton;
         border-radius: 2rem;
         padding: 2rem;
       }
-      .search_form-listOfCheckboxes{
+      .search_form-listOfCheckboxes, .search_form-listOfRadios{
         width: 100%;
         position: absolute;
+        z-index: 1;
         top: 7rem;
         left: 1px;
         background-color: lightgrey;
         border-radius: 2rem;
         padding: 1rem;
       }
+    }
+    .search_form-submitButton{
+      background-color: colors.$bg-searchFormButton;
+      height: 5rem;
+      border-radius: 2rem;
+      margin-bottom: 1rem;
     }
   }
 }
