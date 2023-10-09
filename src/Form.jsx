@@ -8,11 +8,14 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     const [formCuisineRadio, setFormCuisineRadio] = useState("")
     const [formMealTypeRadio, setFormMealTypeRadio] = useState("")
     const [formDishTypeCheckboxes, setFormDishTypeCheckboxes] = useState([])
+    const [formIngredientsMin, setFormIngredientsMin] =useState("")
+    const [formIngredientsMax, setFormIngredientsMax] =useState("")
     const [showFormHealthWindow, setShowFormHealthWindow] = useState(false)
     const [showFormDietWindow, setShowFormDietWindow] = useState(false)
     const [showFormCuisineWindow, setShowFormCuisineWindow] = useState(false)
     const [showFormMealTypeRadio, setShowFormMealTypeRadio] = useState(false)
     const [showFormDishTypeWindow, setShowFormDishTypeWindow] = useState(false)
+    const [showFormIngredientsWindow, setShowFormIngredientsWindow] = useState(false)
     const [formSearch, setFormSearch] = useState("")
 
     // funkca dla wyszukiwarki tekstowej
@@ -22,7 +25,7 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     // funkcja uruchamiająca cały formularz
     const runBrowser = (event) =>{
         event.preventDefault()
-        getData(setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes)
+        getData(setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes, formIngredientsMin, formIngredientsMax)
     }
     // ogólna funkcja zmieniająca array checkboxów
     const changeCheckboxes = (arrayOfCheckboxes, settingFunction, event) =>{
@@ -150,8 +153,22 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
                         </div>)}
                 </div>
                 <div className={"search_form-box-element col-12 col-lg-4"}>
-                    <h3 className={"search_form-heading"}>next</h3>
-                    <div></div>
+                    <h3 className={"search_form-heading"} onClick={()=>handleToggleFormElementWindow(setShowFormIngredientsWindow, showFormIngredientsWindow)}>Ingredients amount</h3>
+                    {showFormIngredientsWindow ?
+                        <div className={"search_form-ingredientsAmount"}>
+                            <div className={"search_form-ingredientsAmountBox"}>
+                                <label htmlFor={"MIN"} >MIN</label>
+                                <input value={formIngredientsMin} id={"MIN"} className={"search_form-ingredients-inputNumber"} type={"number"}
+                                onChange={(event)=>changeFormStringData(setFormIngredientsMin,event)}/>
+                            </div>
+                            <span> - </span>
+                            <div className={"search_form-ingredientsAmountBox"}>
+                                <label htmlFor={"MAX"}>MAX</label>
+                                <input value={formIngredientsMax} id={"MAX"} className={"search_form-ingredients-inputNumber"} type={"number"}
+                                onChange={(event)=>changeFormStringData(setFormIngredientsMax,event)}/>
+                            </div>
+                        </div>
+                        : ""}
                 </div>
                 <button className={"search_form-submitButton"} type={"submit"}>Search for recipes</button>
             </div>
