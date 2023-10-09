@@ -26,8 +26,11 @@
         background-color: colors.$bg-formButton;
         border-radius: 2rem;
         padding: 2rem;
+        &:hover{
+          cursor: pointer;
+        }
       }
-      .search_form-listOfCheckboxes, .search_form-listOfRadios{
+      .search_form-listOfCheckboxes, .search_form-listOfRadios, .search_form-ingredientsAmount{
         width: 100%;
         position: absolute;
         z-index: 1;
@@ -38,6 +41,18 @@
         padding: 1rem;
         max-height: 50vh;
         overflow: auto;
+      }
+      .search_form-ingredientsAmount{
+        display: flex;
+        gap: 1rem;
+        .search_form-ingredientsAmountBox{
+          display: flex;
+          gap: 1rem;
+          align-items: center;
+          .search_form-ingredients-inputNumber{
+            width: 5rem;
+          }
+        }
       }
     }
     .search_form-submitButton{
