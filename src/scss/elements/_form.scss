@@ -1,6 +1,7 @@
 @use "../settings/colors";
 
 .search_form{
+  justify-content: center;
   margin: 5rem;
   padding-top: 5rem;
   font-size: 1.4rem;
@@ -35,6 +36,8 @@
         background-color: lightgrey;
         border-radius: 2rem;
         padding: 1rem;
+        max-height: 50vh;
+        overflow: auto;
       }
     }
     .search_form-submitButton{

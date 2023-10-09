@@ -7,10 +7,12 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     const [formDietCheckboxes, setFormDietCheckboxes] = useState([])
     const [formCuisineRadio, setFormCuisineRadio] = useState("")
     const [formMealTypeRadio, setFormMealTypeRadio] = useState("")
+    const [formDishTypeCheckboxes, setFormDishTypeCheckboxes] = useState([])
     const [showFormHealthWindow, setShowFormHealthWindow] = useState(false)
     const [showFormDietWindow, setShowFormDietWindow] = useState(false)
     const [showFormCuisineWindow, setShowFormCuisineWindow] = useState(false)
     const [showFormMealTypeRadio, setShowFormMealTypeRadio] = useState(false)
+    const [showFormDishTypeWindow, setShowFormDishTypeWindow] = useState(false)
     const [formSearch, setFormSearch] = useState("")
 
     // funkca dla wyszukiwarki tekstowej
@@ -20,7 +22,7 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     // funkcja uruchamiająca cały formularz
     const runBrowser = (event) =>{
         event.preventDefault()
-        getData(setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , setNextLink, formHealthCheckboxes, formDietCheckboxes)
+        getData(setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes)
     }
     // ogólna funkcja zmieniająca array checkboxów
     const changeCheckboxes = (arrayOfCheckboxes, settingFunction, event) =>{
@@ -127,6 +129,25 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
                             })}
                         </div>
                         : ""}
+                </div>
+                <div className={"search_form-box-element col-12 col-lg-4"}>
+                    <h3 className={"search_form-heading"}
+                        onClick={()=>handleToggleFormElementWindow(setShowFormDishTypeWindow, showFormDishTypeWindow)}>
+                        Dish type{formDishTypeCheckboxes.length > 0 ? ` - ${formDishTypeCheckboxes.length} selected` : ""}
+                    </h3>
+                    {showFormDishTypeWindow &&
+                        (<div className={"search_form-listOfCheckboxes"}>
+                            {dishTypeOptions.map((item, index) => {
+                                return(
+                                    <div key={index*Math.random()}>
+                                        <input id={item} key={index*Math.random()} value={item} type={"checkbox"}
+                                               onChange={(event) =>changeCheckboxes(formDishTypeCheckboxes,setFormDishTypeCheckboxes,event)}
+                                               checked={formDishTypeCheckboxes.includes(item)}/>
+                                        <label htmlFor={item} key={index*Math.random()}>{item.replace(/%20/g, " ")}</label>
+                                    </div>
+                                )
+                            })}
+                        </div>)}
                 </div>
                 <div className={"search_form-box-element col-12 col-lg-4"}>
                     <h3 className={"search_form-heading"}>next</h3>
