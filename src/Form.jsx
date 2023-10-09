@@ -25,7 +25,7 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     // funkcja uruchamiająca cały formularz
     const runBrowser = (event) =>{
         event.preventDefault()
-        getData(setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes, formIngredientsMin, formIngredientsMax)
+        getData(setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , formIngredientsMin, formIngredientsMax, setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes)
     }
     // ogólna funkcja zmieniająca array checkboxów
     const changeCheckboxes = (arrayOfCheckboxes, settingFunction, event) =>{
