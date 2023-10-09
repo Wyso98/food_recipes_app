@@ -1,7 +1,7 @@
 import {basicURL, API_KEY, API_ID} from "./API-values.jsx";
 import {compile} from "sass";
 
-export const getData = (settingFunction, query = "", cuisine, mealType, nextLinkSetting, healthArrayOfCheckboxes = [], dietArrayCheckboxes = []) =>{
+export const getData = (settingFunction, query = "", cuisine, mealType, nextLinkSetting, healthArrayOfCheckboxes = [], dietArrayCheckboxes = [], dishTypeArrayCheckboxes) =>{
 
     const formOptionsSearch = (arrayOfCheckboxes, searchParam) =>{
         let linkString = "";
@@ -24,7 +24,8 @@ export const getData = (settingFunction, query = "", cuisine, mealType, nextLink
          searchParams.append("mealType", mealType)
      }
 
-    fetch(`${basicURL}?${searchParams.toString()}${formOptionsSearch(healthArrayOfCheckboxes, "health")}${formOptionsSearch(dietArrayCheckboxes, "diet")}`,{
+    fetch(`${basicURL}?${searchParams.toString()}${formOptionsSearch(healthArrayOfCheckboxes, "health")}
+    ${formOptionsSearch(dietArrayCheckboxes, "diet")}${formOptionsSearch(dishTypeArrayCheckboxes, "dishType")}`,{
         method: "GET"
     })
         .then(response => response.json())
