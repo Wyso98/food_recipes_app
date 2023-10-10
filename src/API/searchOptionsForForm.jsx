@@ -5,8 +5,8 @@ export const healthOptions = ["alcohol-cocktail", "alcohol-free", "celery-free",
 
 export const dietOptions = ["balanced", "high-fiber", "high-protein", "low-carb", "low-fat", "low-sodium"];
 
-export const cuisineOptions = ["American", "Asian", "British", "Caribbean", "Central%20Europe","Eastern%20Europe", "Chinese","French", "Indian","Italian","Japanese", "Kosher",
-    "Mediterranean", "Mexican", "Middle%20Eastern", "Nordic", "South%20American", "South%20East%20Asian"]
+export const cuisineOptions = ["American", "Asian", "British", "Caribbean", "Central Europe","Eastern Europe", "Chinese","French", "Indian","Italian","Japanese", "Kosher",
+    "Mediterranean", "Mexican", "Middle Eastern", "Nordic", "South American", "South East Asian"]
 
 export const mealTypeOptions = ["Breakfast", "Dinner", "Lunch", "Snack", "Teatime"]
 
