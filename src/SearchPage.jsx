@@ -1,11 +1,20 @@
 import React, {useState} from "react";
 import {RecipeElement} from "./RecipeElement.jsx";
-import {getData, getDataInfiniteScroll} from "./API/API-metods.jsx";
+import {getDataForRandom, getDataInfiniteScroll} from "./API/API-metods.jsx";
 import InfiniteScroll from "react-infinite-scroller";
 import {Form} from "./Form.jsx";
+import {Link} from "react-router-dom";
 
-export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes}) =>{
+
+export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData, setRandomRecipeData}) =>{
     const [nextLink, setNextLink] = useState("")
+
+    const loadRandomRecipe = () =>{
+        getDataForRandom(setRandomRecipeData)
+    }
+    const getIdFromUri = (uriLink) =>{
+        return uriLink.split("#recipe")[1]
+    }
 
     const showRecipes = () =>{
         if(arrayOfRecipes.length === 0){
@@ -33,6 +42,13 @@ export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes}) =>{
         <main className={"container container-background-browser"}>
             <div className={"browser"}>
                 <Form setNextLink={setNextLink} setArrayOfRecipes={setArrayOfRecipes}/>
+                <h2>Search For Random recipe</h2>
+                <button onClick={loadRandomRecipe}>Search for random</button>
+                {randomRecipeData ?  <div>
+                  <p>{randomRecipeData.recipe.label}{randomRecipeData.recipe.uri}</p>
+                    <p>{getIdFromUri(randomRecipeData.recipe.uri)}</p>
+                    <Link to={`/searchForRecipe/${getIdFromUri(randomRecipeData.recipe.uri)}`}>LINK</Link>
+                </div> : ""}
                 {showRecipes()}
             </div>
         </main>

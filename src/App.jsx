@@ -9,14 +9,16 @@ import {RecipePage} from "./RecipePage.jsx";
 
 function App() {
     const [arrayOfRecipes, setArrayOfRecipes] = useState([]);
+    const [randomRecipeData, setRandomRecipeData] = useState(false)
 
-  return (
+    return (
           <HashRouter>
               <Navigation/>
               <div className={"pageBackground"}>
                   <Routes>
                       <Route path={"/"} element={<EntryPage/>}/>
-                      <Route path={"/searchForRecipe"} element={<SearchPage arrayOfRecipes={arrayOfRecipes} setArrayOfRecipes={setArrayOfRecipes}/>}/>
+                      <Route path={"/searchForRecipe"} element={<SearchPage arrayOfRecipes={arrayOfRecipes} setArrayOfRecipes={setArrayOfRecipes}
+                            randomRecipeData={randomRecipeData} setRandomRecipeData={setRandomRecipeData}/>}/>
                       <Route path={"/searchForRecipe/:recipeID"} element={<RecipePage/>}/>
                   </Routes>
               </div>

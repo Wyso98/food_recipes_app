@@ -1,4 +1,5 @@
 import {basicURL, API_KEY, API_ID} from "./API-values.jsx";
+import {cuisineOptions, dietOptions, dishTypeOptions, mealTypeOptions} from "./searchOptionsForForm.jsx";
 
 export const getData = (settingFunction, query = "", cuisine, mealType, min, max, nextLinkSetting, healthArrayOfCheckboxes = [], dietArrayCheckboxes = [], dishTypeArrayCheckboxes) =>{
 
@@ -77,6 +78,27 @@ export const getDataForID = (id, settingProductData) => {
         .then(data => {
             settingProductData(data.recipe)
             console.log(data.recipe)
+        })
+        .catch(error => console.log(error))
+}
+export const getDataForRandom = (settingProductData) => {
+
+    const searchParams = new URLSearchParams({
+        app_id: API_ID,
+        app_key: API_KEY,
+        type: "public",
+        ingr: "0-1000",
+        cuisineType: cuisineOptions[Math.floor(Math.random() * cuisineOptions.length)],
+        mealType : mealTypeOptions[Math.floor(Math.random()* mealTypeOptions.length)]
+    })
+
+    fetch(`${basicURL}?${searchParams.toString()}`, {
+        method: "GET",
+    })
+        .then(response => response.json())
+        .then(data => {
+            settingProductData(data.hits[Math.floor(Math.random()*20)])
+            console.log(data.hits[0])
         })
         .catch(error => console.log(error))
 }
