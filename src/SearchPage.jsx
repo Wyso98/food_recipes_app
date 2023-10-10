@@ -44,10 +44,10 @@ export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData,
                 <Form setNextLink={setNextLink} setArrayOfRecipes={setArrayOfRecipes}/>
                 <h2>Search For Random recipe</h2>
                 <button onClick={loadRandomRecipe}>Search for random</button>
-                {randomRecipeData ?  <div>
-                  <p>{randomRecipeData.recipe.label}{randomRecipeData.recipe.uri}</p>
-                    <p>{getIdFromUri(randomRecipeData.recipe.uri)}</p>
-                    <Link to={`/searchForRecipe/${getIdFromUri(randomRecipeData.recipe.uri)}`}>LINK</Link>
+                {randomRecipeData ?  <div className={"random_searcher-box row"}>
+                    <Link to={`/searchForRecipe/${getIdFromUri(randomRecipeData.recipe.uri)}`}>
+                        <h2>{randomRecipeData.recipe.label}</h2>
+                    </Link>
                 </div> : ""}
                 {showRecipes()}
             </div>
