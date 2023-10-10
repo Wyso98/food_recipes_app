@@ -16,8 +16,10 @@
           font-weight: bold;
         }
         .header_image{
+          transform: scaleX(-1);
           width: 400px;
           height: 400px;
+          padding-top: 1rem;
         }
       }
     }
