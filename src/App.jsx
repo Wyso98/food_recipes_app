@@ -10,6 +10,7 @@ import {RecipePage} from "./RecipePage.jsx";
 function App() {
     const [arrayOfRecipes, setArrayOfRecipes] = useState([]);
     const [randomRecipeData, setRandomRecipeData] = useState(false)
+    const [nextLink, setNextLink] = useState("")
 
     return (
           <HashRouter>
@@ -18,7 +19,7 @@ function App() {
                   <Routes>
                       <Route path={"/"} element={<EntryPage/>}/>
                       <Route path={"/searchForRecipe"} element={<SearchPage arrayOfRecipes={arrayOfRecipes} setArrayOfRecipes={setArrayOfRecipes}
-                            randomRecipeData={randomRecipeData} setRandomRecipeData={setRandomRecipeData}/>}/>
+                            randomRecipeData={randomRecipeData} setRandomRecipeData={setRandomRecipeData} nextLink={nextLink} setNextLink={setNextLink}/>}/>
                       <Route path={"/searchForRecipe/:recipeID"} element={<RecipePage/>}/>
                   </Routes>
               </div>

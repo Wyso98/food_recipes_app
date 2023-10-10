@@ -1,6 +1,7 @@
 @use "../settings/colors";
 
 .navigation-container{
+  z-index: 2;
   background-color: colors.$nav-color;
   position: fixed;
   top: 0;
