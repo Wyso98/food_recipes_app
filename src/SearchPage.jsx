@@ -6,8 +6,7 @@ import {Form} from "./Form.jsx";
 import {Link} from "react-router-dom";
 
 
-export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData, setRandomRecipeData}) =>{
-    const [nextLink, setNextLink] = useState("")
+export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData, setRandomRecipeData, nextLink, setNextLink}) =>{
 
     const loadRandomRecipe = () =>{
         getDataForRandom(setRandomRecipeData)
@@ -42,11 +41,24 @@ export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData,
         <main className={"container container-background-browser"}>
             <div className={"browser"}>
                 <Form setNextLink={setNextLink} setArrayOfRecipes={setArrayOfRecipes}/>
-                <h2>Search For Random recipe</h2>
-                <button onClick={loadRandomRecipe}>Search for random</button>
+                <div className={"random_searcher-panel col-12"}>
+                    <h2 className={"random_searcher-panel-heading"}>Search For Random recipe</h2>
+                    <button className={"random_searcher-panel-button"} onClick={loadRandomRecipe}>Search for random</button>
+                </div>
                 {randomRecipeData ?  <div className={"random_searcher-box row"}>
-                    <Link to={`/searchForRecipe/${getIdFromUri(randomRecipeData.recipe.uri)}`}>
-                        <h2>{randomRecipeData.recipe.label}</h2>
+                    <Link className={"col-12 col-xl-10 random_searcher-box-link"} to={`/searchForRecipe/${getIdFromUri(randomRecipeData.recipe.uri)}`}>
+                        <h2 className={"random_searcher-boxHeading"}>{randomRecipeData.recipe.label}</h2>
+                        <div className={"random_searcher-box-underHeading"}>
+                            <div className={"random_searcher-left"}>
+                                <img className={"random_searcher-recipe-image"} src={randomRecipeData.recipe.images.REGULAR.url}/>
+                            </div>
+                            <div className={"random_searcher-right"}>
+                                <p className={"random_searcher-right-element"}>Kitchen type: {randomRecipeData.recipe.cuisineType.map((item, index) => <span key={index}>{`${item} `}</span>)}</p>
+                                <p className={"random_searcher-right-element"}>Type of diet: {randomRecipeData.recipe.dietLabels.map((item, index) => <span key={index}>{`${item} `}</span>)}</p>
+                                <p className={"random_searcher-right-element"}>Meal type: {randomRecipeData.recipe.mealType.map((item, index) => <span key={index}>{`${item} `}</span>)}</p>
+                                <p className={"random_searcher-right-element"}>Dish Type: {randomRecipeData.recipe.dishType.map((item, index) => <span key={index}>{`${item} `}</span>)}</p>
+                            </div>
+                        </div>
                     </Link>
                 </div> : ""}
                 {showRecipes()}

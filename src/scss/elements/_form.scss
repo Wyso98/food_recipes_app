@@ -2,15 +2,19 @@
 
 .search_form{
   justify-content: center;
-  margin: 5rem;
+  margin: 0.3rem;
   padding-top: 5rem;
   font-size: 1.4rem;
+  @media screen and (min-width: 576px)  {
+    margin: 5rem;
+  }
   .search_input_text{
     font-size: 1.4rem;
     height: 5rem;
     padding-left: 2rem;
     border-radius: 3rem;
     border: 2px solid colors.$border-1;
+    margin-bottom: 1rem;
     &:hover{
       cursor: pointer;
     }
@@ -32,7 +36,6 @@
       }
       .search_form-listOfCheckboxes, .search_form-listOfRadios, .search_form-ingredientsAmount{
         width: 100%;
-        position: absolute;
         z-index: 1;
         top: 7rem;
         left: 1px;
@@ -41,6 +44,9 @@
         padding: 1rem;
         max-height: 50vh;
         overflow: auto;
+        @media screen and (min-width: 992px) {
+          position: absolute;
+        }
       }
       .search_form-ingredientsAmount{
         display: flex;
