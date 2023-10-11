@@ -1,4 +1,6 @@
 import React from "react";
+import {InterestingFactsOnEntry} from "./InterestingFactsOnEntry.jsx";
+
 
 export const EntryPage = ()=>{
 
@@ -11,9 +13,7 @@ export const EntryPage = ()=>{
                             <img className={"header_image"} src={"../public/chefImage.svg"} alt={"chef-image"}/>
                         </div>
                     </header>
-                    <section>
-
-                    </section>
+                    <InterestingFactsOnEntry/>
                 </div>
             </main>
     )
