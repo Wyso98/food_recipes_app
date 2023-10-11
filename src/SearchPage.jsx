@@ -5,7 +5,6 @@ import InfiniteScroll from "react-infinite-scroller";
 import {Form} from "./Form.jsx";
 import {Link} from "react-router-dom";
 
-
 export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData, setRandomRecipeData, nextLink, setNextLink}) =>{
 
     const loadRandomRecipe = () =>{

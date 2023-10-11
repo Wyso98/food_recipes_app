@@ -1,0 +1,63 @@
+@use '../settings/colors';
+
+.footer-bg{
+  background-color: colors.$nav-color;
+  padding-top: 2rem;
+  .footer-container{
+    width: 100%;
+    .footer-up{
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: center;
+      gap: 2rem;
+      @media screen and (min-width: 480px){
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+        flex-direction: row;
+        justify-content: space-around;
+      }
+      .footer-left{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        .footer-icon{
+          width: 4rem;
+          height: 4rem;
+        }
+      }
+      .footer-right{
+        display: flex;
+        flex-direction: column;
+        .newsletter-heading{
+          display: flex;
+          justify-content: center;
+          font-size: 1.7rem;
+        }
+        .newsletter-input{
+          width: 20rem;
+          border-radius: 1rem;
+          border: 1px solid colors.$border-1;
+          padding: 0.7rem;
+        }
+        .newsletter-submit{
+          width: 20rem;
+          border-radius: 1rem;
+          border: 1px solid colors.$border-1;
+          padding: 0.5rem;
+          background-color: colors.$container-color;
+          font-size: 1.5rem;
+        }
+      }
+    }
+    .footer-linkToUp{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 4rem;
+      background-color: colors.$nav-color;
+      filter: brightness(82%);
+      font-size: 2rem;
+    }
+  }
+}

@@ -24,12 +24,15 @@
     border-radius: 2rem;
     border: 2px solid black;
     padding-top: 1rem;
+    box-shadow: 8px 5px 15px -1px rgba(66, 68, 90, 1);
     .search_form-box-element{
       position: relative;
       .search_form-heading{
         background-color: colors.$bg-formButton;
         border-radius: 2rem;
         padding: 2rem;
+        border: colors.$border-1 solid 1px;
+        box-shadow: 8px 5px 15px -9px rgba(66, 68, 90, 1);
         &:hover{
           cursor: pointer;
         }
@@ -44,6 +47,7 @@
         padding: 1rem;
         max-height: 50vh;
         overflow: auto;
+        margin-bottom: 0.5rem;
         @media screen and (min-width: 992px) {
           position: absolute;
         }
