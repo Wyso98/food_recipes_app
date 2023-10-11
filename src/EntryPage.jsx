@@ -1,5 +1,6 @@
 import React from "react";
 import {InterestingFactsOnEntry} from "./InterestingFactsOnEntry.jsx";
+import {Footer} from "./Footer.jsx";
 
 
 export const EntryPage = ()=>{
@@ -14,6 +15,7 @@ export const EntryPage = ()=>{
                         </div>
                     </header>
                     <InterestingFactsOnEntry/>
+                    <Footer/>
                 </div>
             </main>
     )
