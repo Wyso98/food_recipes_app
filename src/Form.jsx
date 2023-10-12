@@ -49,6 +49,17 @@ export const Form = ({setArrayOfRecipes, setNextLink, setRecipeCountOfSearch}) =
     const changeFormStringData = (settingFunction, event) =>{
         settingFunction(event.target.value)
     }
+    // reset function
+    const resetFunction = () =>{
+        setFormSearch("");
+        setFormHealthCheckboxes([]);
+        setFormDietCheckboxes([]);
+        setFormCuisineRadio("");
+        setFormMealTypeRadio("");
+        setFormDishTypeCheckboxes([]);
+        setFormIngredientsMin("");
+        setFormIngredientsMax("");
+    }
 
     return(
         <form className={"search_form row"} onSubmit={runBrowser}>
@@ -176,7 +187,10 @@ export const Form = ({setArrayOfRecipes, setNextLink, setRecipeCountOfSearch}) =
                         </div>
                         : ""}
                 </div>
-                <button className={"search_form-submitButton"} type={"submit"}>Search for recipes</button>
+                <div className={"form-buttons-box"}>
+                    <button className={"search_form-button search_form-resetButton"} type={"button"} onClick={resetFunction}>Reset</button>
+                    <button className={"search_form-button search_form-submitButton"} type={"submit"}>Search for recipes</button>
+                </div>
             </div>
         </form>
     )
