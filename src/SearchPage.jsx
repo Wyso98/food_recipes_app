@@ -7,8 +7,10 @@ import {Link} from "react-router-dom";
 
 export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData, setRandomRecipeData, nextLink, setNextLink, recipeCountOfSearch, setRecipeCountOfSearch}) =>{
 
+    const [showRandomElement, setShowRandomElement] = useState(true)
     const loadRandomRecipe = () =>{
-        getDataForRandom(setRandomRecipeData)
+        setShowRandomElement(true);
+        getDataForRandom(setRandomRecipeData);
     }
     const getIdFromUri = (uriLink) =>{
         return uriLink.split("#recipe")[1]
@@ -39,12 +41,16 @@ export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData,
     return(
         <main className={"container container-background-browser"}>
             <div className={"browser"}>
-                <Form setRecipeCountOfSearch={setRecipeCountOfSearch} setNextLink={setNextLink} setArrayOfRecipes={setArrayOfRecipes}/>
+                <Form setShowRandomElement={setShowRandomElement} setRecipeCountOfSearch={setRecipeCountOfSearch} setNextLink={setNextLink} setArrayOfRecipes={setArrayOfRecipes}/>
                 <div className={"random_searcher-panel col-12"}>
                     <h2 className={"random_searcher-panel-heading"}>Search For Random recipe</h2>
-                    <button className={"random_searcher-panel-button"} onClick={loadRandomRecipe}>Search for random</button>
+                    <div className={"random_searcher-panel-buttonsBox"}>
+                        <button className={"random_searcher-panel-button"} onClick={loadRandomRecipe}>Search for random</button>
+                        {(randomRecipeData && !showRandomElement)  ? <button onClick={() =>setShowRandomElement(true)} className={"random_searcher-panel-button"}>Show my random</button> : ""}
+                        {(randomRecipeData && showRandomElement) ? <button onClick={() =>setShowRandomElement(false)} className={"random_searcher-panel-button"}>Hide my random</button> : ""}
+                    </div>
                 </div>
-                {randomRecipeData ?  <div className={"random_searcher-box row"}>
+                {(randomRecipeData && showRandomElement) ?  <div className={"random_searcher-box row"}>
                     <Link className={"col-12 col-xl-10 random_searcher-box-link"} to={`/searchForRecipe/${getIdFromUri(randomRecipeData.recipe.uri)}`}>
                         <h2 className={"random_searcher-boxHeading"}>{randomRecipeData.recipe.label}</h2>
                         <div className={"random_searcher-box-underHeading"}>

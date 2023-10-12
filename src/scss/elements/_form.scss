@@ -20,15 +20,23 @@
     }
   }
   .search_form-box{
-    background-color: white;
+    justify-content: center;
+    background-color: colors.$white-color;
     border-radius: 2rem;
     border: 2px solid black;
     padding-top: 1rem;
     box-shadow: 8px 5px 15px -1px rgba(66, 68, 90, 1);
+    @media screen and (min-width: 992px){
+      justify-content: space-evenly;
+    }
     .search_form-box-element{
+      width: 90%;
       position: relative;
+      @media screen and (min-width: 992px){
+        width: 30%;
+      }
       .search_form-heading{
-        background-color: colors.$bg-formButton;
+        background-color: colors.$primary-color;
         border-radius: 2rem;
         padding: 2rem;
         border: colors.$border-1 solid 1px;
@@ -42,7 +50,7 @@
         z-index: 1;
         top: 7rem;
         left: 1px;
-        background-color: lightgrey;
+        background-color: colors.$bg-3;
         border-radius: 2rem;
         padding: 1rem;
         max-height: 50vh;
@@ -66,12 +74,16 @@
       }
     }
     .form-buttons-box{
+      width: 90%;
+      margin-left: 10%;
+      margin-right: 10%;
       display: flex;
       gap: 1rem;
       margin-top: 1rem;
       @media screen and (min-width: 992px){
         margin-left: 50%;
         width: 50%;
+        margin-right: 5%;
       }
       .search_form-button{
         box-shadow: 8px 5px 15px -9px rgba(66, 68, 90, 1);
@@ -82,10 +94,10 @@
         flex-grow: 1;
       }
       .search_form-submitButton{
-        background-color: colors.$bg-searchFormButton;
+        background-color: colors.$secondary-color;
       }
       .search_form-resetButton{
-        background-color: colors.$bg-formButton;
+        background-color: colors.$primary-color;
       }
     }
   }

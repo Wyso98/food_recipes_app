@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {getData} from "./API/API-metods.jsx";
 import {healthOptions, dietOptions, cuisineOptions, dishTypeOptions, mealTypeOptions} from "./API/searchOptionsForForm.jsx";
 
-export const Form = ({setArrayOfRecipes, setNextLink, setRecipeCountOfSearch}) =>{
+export const Form = ({setArrayOfRecipes, setNextLink, setRecipeCountOfSearch, setShowRandomElement}) =>{
     const [formHealthCheckboxes, setFormHealthCheckboxes] = useState([])
     const [formDietCheckboxes, setFormDietCheckboxes] = useState([])
     const [formCuisineRadio, setFormCuisineRadio] = useState("")
@@ -30,6 +30,7 @@ export const Form = ({setArrayOfRecipes, setNextLink, setRecipeCountOfSearch}) =
             setFormIngredientsMin("");
             setFormIngredientsMax("");
         }else{
+            setShowRandomElement(false);
             getData(setRecipeCountOfSearch, setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , formIngredientsMin, formIngredientsMax, setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes)
         }
     }
@@ -66,48 +67,48 @@ export const Form = ({setArrayOfRecipes, setNextLink, setRecipeCountOfSearch}) =
             <input className={"search_input_text col-12"} type={"text"} id={"search_input_text"} placeholder={"Search..."} value={formSearch}
                    onChange={(event) => searchForRecipeInput(event)}/>
             <div className={"search_form-box row"}>
-                <div className={"search_form-box-element col-12 col-lg-4"}>
+                <div className={"search_form-box-element"}>
                     <h3 className={"search_form-heading"}
                         onClick={()=>handleToggleFormElementWindow(setShowFormHealthWindow, showFormHealthWindow)}>
                         Choose Health Label{formHealthCheckboxes.length > 0 ? ` - ${formHealthCheckboxes.length} selected` : ""}
                     </h3>
                     {showFormHealthWindow &&
-                        (<div className={"search_form-listOfCheckboxes"}>
-                            {healthOptions.map((item, index) => {
+                        (<div key={"listOfCheckboxes-health"} className={"search_form-listOfCheckboxes"}>
+                            {healthOptions.map((item) => {
                                 return(
-                                    <div key={index*Math.random()}>
-                                        <input id={item} key={index*Math.random()} value={item} type={"checkbox"}
+                                    <div key={item}>
+                                        <input id={item} value={item} type={"checkbox"}
                                                onChange={(event) =>changeCheckboxes(formHealthCheckboxes,setFormHealthCheckboxes,event)}
                                                checked={formHealthCheckboxes.includes(item)}/>
-                                        <label htmlFor={item} key={index*Math.random()}>{item.replace(/-/g, " ")}</label>
+                                        <label htmlFor={item} >{item.replace(/-/g, " ")}</label>
                                     </div>
                                 )
                             })}
                         </div>)}
                 </div>
-                <div className={"search_form-box-element col-12 col-lg-4"}>
+                <div className={"search_form-box-element"}>
                     <h3 className={"search_form-heading"} onClick={()=> handleToggleFormElementWindow(setShowFormDietWindow, showFormDietWindow)}>
                         Diet type {formDietCheckboxes.length > 0 ?`- ${formDietCheckboxes.length} selected` : ""}</h3>
                     {showFormDietWindow &&
-                        <div className={"search_form-listOfCheckboxes"}>
+                        <div key={"listOfCheckboxes-diet"} className={"search_form-listOfCheckboxes"}>
                             {dietOptions.map((item, index)=>{
                                 return (
-                                    <div key={index*Math.random()}>
-                                        <input key={index*Math.random()} id={item} value={item} type={"checkbox"}
+                                    <div key={index}>
+                                        <input id={item} value={item} type={"checkbox"}
                                                onChange={event => changeCheckboxes(formDietCheckboxes, setFormDietCheckboxes, event)}
                                                checked={formDietCheckboxes.includes(item)}/>
-                                        <label htmlFor={item} key={index*Math.random()}>{item.replace(/-/g, " ")}</label>
+                                        <label htmlFor={item} >{item.replace(/-/g, " ")}</label>
                                     </div>
                                 )
                             })}
                         </div>}
                 </div>
-                <div className={"search_form-box-element col-12 col-lg-4"}>
+                <div className={"search_form-box-element"}>
                     <h3 className={"search_form-heading"} onClick={()=>handleToggleFormElementWindow(setShowFormCuisineWindow, showFormCuisineWindow)}>
                         Cuisine options {formCuisineRadio ? "- Cuisine selected" : ""}</h3>
                     {showFormCuisineWindow ?
-                        <div className={"search_form-listOfRadios"}>
-                            <div key={Math.random()}>
+                        <div key={"listOfRadios-cuisine"} className={"search_form-listOfRadios"}>
+                            <div>
                                 <input id={"noneCuisine"} type={"radio"} value={""} name={"cuisineOptions"}
                                        onChange={(event)=> changeFormStringData(setFormCuisineRadio,event)}
                                        checked={formCuisineRadio === ""}/>
@@ -115,23 +116,23 @@ export const Form = ({setArrayOfRecipes, setNextLink, setRecipeCountOfSearch}) =
                             </div>
                             {cuisineOptions.map((item, index)=>{
                                 return(
-                                    <div key={Math.random()}>
-                                        <input id={item} type={"radio"} value={item} name={"cuisineOptions"} key={Math.random()}
+                                    <div key={index}>
+                                        <input id={item} type={"radio"} value={item} name={"cuisineOptions"}
                                                onChange={(event)=> changeFormStringData(setFormCuisineRadio,event)}
                                                checked={formCuisineRadio === item}/>
-                                        <label key={Math.random()} htmlFor={item}>{item.replace(/%20/g, " ")}</label>
+                                        <label htmlFor={item}>{item}</label>
                                     </div>
                                 )
                             })}
                         </div>
                         : ""}
                 </div>
-                <div className={"search_form-box-element col-12 col-lg-4"}>
+                <div className={"search_form-box-element"}>
                     <h3 className={"search_form-heading"} onClick={()=>handleToggleFormElementWindow(setShowFormMealTypeRadio, showFormMealTypeRadio)}>
                         Meal Type {formMealTypeRadio ? "- Meal type selected" : ""}</h3>
                     {showFormMealTypeRadio ?
-                        <div className={"search_form-listOfRadios"}>
-                            <div key={Math.random()}>
+                        <div key={"listOfRadios-Meal"} className={"search_form-listOfRadios"}>
+                            <div>
                                 <input id={"noneMealType"} type={"radio"} value={""} name={"MealTypeOptions"}
                                        onChange={(event)=> changeFormStringData(setFormMealTypeRadio,event)}
                                        checked={formMealTypeRadio === ""}/>
@@ -139,40 +140,40 @@ export const Form = ({setArrayOfRecipes, setNextLink, setRecipeCountOfSearch}) =
                             </div>
                             {mealTypeOptions.map((item, index)=>{
                                 return(
-                                    <div key={Math.random()}>
-                                        <input id={item} type={"radio"} value={item} name={"MealTypeOptions"} key={Math.random()}
+                                    <div key={index}>
+                                        <input id={item} type={"radio"} value={item} name={"MealTypeOptions"}
                                                onChange={(event)=> changeFormStringData(setFormMealTypeRadio,event)}
                                                checked={formMealTypeRadio === item}/>
-                                        <label key={Math.random()} htmlFor={item}>{item.replace(/-/g, " ")}</label>
+                                        <label htmlFor={item}>{item.replace(/-/g, " ")}</label>
                                     </div>
                                 )
                             })}
                         </div>
                         : ""}
                 </div>
-                <div className={"search_form-box-element col-12 col-lg-4"}>
+                <div className={"search_form-box-element"}>
                     <h3 className={"search_form-heading"}
                         onClick={()=>handleToggleFormElementWindow(setShowFormDishTypeWindow, showFormDishTypeWindow)}>
                         Dish type{formDishTypeCheckboxes.length > 0 ? ` - ${formDishTypeCheckboxes.length} selected` : ""}
                     </h3>
                     {showFormDishTypeWindow &&
-                        (<div className={"search_form-listOfCheckboxes"}>
-                            {dishTypeOptions.map((item, index) => {
+                        (<div key={"listOfCheckboxes-dish"} className={"search_form-listOfCheckboxes"}>
+                            {dishTypeOptions.map((item) => {
                                 return(
-                                    <div key={index*Math.random()}>
-                                        <input id={item} key={index*Math.random()} value={item} type={"checkbox"}
+                                    <div key={item}>
+                                        <input id={item} value={item} type={"checkbox"}
                                                onChange={(event) =>changeCheckboxes(formDishTypeCheckboxes,setFormDishTypeCheckboxes,event)}
                                                checked={formDishTypeCheckboxes.includes(item)}/>
-                                        <label htmlFor={item} key={index*Math.random()}>{item.replace(/%20/g, " ")}</label>
+                                        <label htmlFor={item}>{item.replace(/%20/g, " ")}</label>
                                     </div>
                                 )
                             })}
                         </div>)}
                 </div>
-                <div className={"search_form-box-element col-12 col-lg-4"}>
+                <div className={"search_form-box-element"}>
                     <h3 className={"search_form-heading"} onClick={()=>handleToggleFormElementWindow(setShowFormIngredientsWindow, showFormIngredientsWindow)}>Ingredients amount</h3>
                     {showFormIngredientsWindow ?
-                        <div className={"search_form-ingredientsAmount"}>
+                        <div key={"ingredientsAmount"} className={"search_form-ingredientsAmount"}>
                             <div className={"search_form-ingredientsAmountBox"}>
                                 <label htmlFor={"MIN"} >MIN</label>
                                 <input value={formIngredientsMin} id={"MIN"} className={"search_form-ingredients-inputNumber"} type={"number"}
