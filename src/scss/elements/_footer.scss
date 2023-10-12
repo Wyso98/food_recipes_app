@@ -1,7 +1,7 @@
 @use '../settings/colors';
 
 .footer-bg{
-  background-color: colors.$nav-color;
+  background-color: colors.$secondary-color;
   padding-top: 2rem;
   .footer-container{
     width: 100%;
@@ -44,7 +44,7 @@
           border-radius: 1rem;
           border: 1px solid colors.$border-1;
           padding: 0.5rem;
-          background-color: colors.$container-color;
+          background-color: colors.$bg-2;
           font-size: 1.5rem;
         }
       }
@@ -55,7 +55,7 @@
       align-items: center;
       width: 100%;
       height: 4rem;
-      background-color: colors.$nav-color;
+      background-color: colors.$secondary-color;
       filter: brightness(82%);
       font-size: 2rem;
     }
