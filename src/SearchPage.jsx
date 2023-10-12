@@ -5,7 +5,7 @@ import InfiniteScroll from "react-infinite-scroller";
 import {Form} from "./Form.jsx";
 import {Link} from "react-router-dom";
 
-export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData, setRandomRecipeData, nextLink, setNextLink}) =>{
+export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData, setRandomRecipeData, nextLink, setNextLink, recipeCountOfSearch, setRecipeCountOfSearch}) =>{
 
     const loadRandomRecipe = () =>{
         getDataForRandom(setRandomRecipeData)
@@ -23,7 +23,7 @@ export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData,
                     className={"recipes_box"}
                     pageStart={0}
                     loadMore={()=>getDataInfiniteScroll(nextLink, setArrayOfRecipes, setNextLink)}
-                    hasMore={true}
+                    hasMore={arrayOfRecipes.length <= recipeCountOfSearch}
                     loader={
                         <div className="spinner-border" role="status">
                             <span className="sr-only"></span>
@@ -39,7 +39,7 @@ export const SearchPage = ({arrayOfRecipes, setArrayOfRecipes, randomRecipeData,
     return(
         <main className={"container container-background-browser"}>
             <div className={"browser"}>
-                <Form setNextLink={setNextLink} setArrayOfRecipes={setArrayOfRecipes}/>
+                <Form setRecipeCountOfSearch={setRecipeCountOfSearch} setNextLink={setNextLink} setArrayOfRecipes={setArrayOfRecipes}/>
                 <div className={"random_searcher-panel col-12"}>
                     <h2 className={"random_searcher-panel-heading"}>Search For Random recipe</h2>
                     <button className={"random_searcher-panel-button"} onClick={loadRandomRecipe}>Search for random</button>
