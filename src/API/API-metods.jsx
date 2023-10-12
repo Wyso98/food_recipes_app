@@ -1,7 +1,7 @@
 import {basicURL, API_KEY, API_ID} from "./API-values.jsx";
 import {cuisineOptions, dietOptions, dishTypeOptions, mealTypeOptions} from "./searchOptionsForForm.jsx";
 
-export const getData = (settingFunction, query = "", cuisine, mealType, min, max, nextLinkSetting, healthArrayOfCheckboxes = [], dietArrayCheckboxes = [], dishTypeArrayCheckboxes) =>{
+export const getData = (setCountRecipeAmount ,settingFunction, query = "", cuisine, mealType, min, max, nextLinkSetting, healthArrayOfCheckboxes = [], dietArrayCheckboxes = [], dishTypeArrayCheckboxes) =>{
 
     const formOptionsSearch = (arrayOfCheckboxes, searchParam) =>{
         let linkString = "";
@@ -40,9 +40,11 @@ export const getData = (settingFunction, query = "", cuisine, mealType, min, max
         .then(response => response.json())
         .then(data => {
             console.log(data.hits)
+            setCountRecipeAmount(data.count);
             settingFunction(data.hits);
             nextLinkSetting(data._links.next.href)
             console.log(data._links.next.href)
+            console.log(data.count)
         })
 
         .catch(error => console.log(error))

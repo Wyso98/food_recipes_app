@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {getData} from "./API/API-metods.jsx";
 import {healthOptions, dietOptions, cuisineOptions, dishTypeOptions, mealTypeOptions} from "./API/searchOptionsForForm.jsx";
 
-export const Form = ({setArrayOfRecipes, setNextLink}) =>{
+export const Form = ({setArrayOfRecipes, setNextLink, setRecipeCountOfSearch}) =>{
     const [formHealthCheckboxes, setFormHealthCheckboxes] = useState([])
     const [formDietCheckboxes, setFormDietCheckboxes] = useState([])
     const [formCuisineRadio, setFormCuisineRadio] = useState("")
@@ -30,7 +30,7 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
             setFormIngredientsMin("");
             setFormIngredientsMax("");
         }else{
-            getData(setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , formIngredientsMin, formIngredientsMax, setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes)
+            getData(setRecipeCountOfSearch, setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , formIngredientsMin, formIngredientsMax, setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes)
         }
     }
     // function for changing arrays of checkboxes
