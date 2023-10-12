@@ -18,16 +18,22 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
     const [showFormIngredientsWindow, setShowFormIngredientsWindow] = useState(false)
     const [formSearch, setFormSearch] = useState("")
 
-    // funkca dla wyszukiwarki tekstowej
+    // function for text search input
     const searchForRecipeInput = (event)=>{
         setFormSearch(event.target.value)
     }
-    // funkcja uruchamiająca cały formularz
+    // function for submit form
     const runBrowser = (event) =>{
         event.preventDefault()
-        getData(setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , formIngredientsMin, formIngredientsMax, setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes)
+        if(formIngredientsMin < 0 || formIngredientsMax < 0){
+            alert("Values of MIN and MAX ingredients can't be negative");
+            setFormIngredientsMin("");
+            setFormIngredientsMax("");
+        }else{
+            getData(setArrayOfRecipes, formSearch, formCuisineRadio, formMealTypeRadio , formIngredientsMin, formIngredientsMax, setNextLink, formHealthCheckboxes, formDietCheckboxes, formDishTypeCheckboxes)
+        }
     }
-    // ogólna funkcja zmieniająca array checkboxów
+    // function for changing arrays of checkboxes
     const changeCheckboxes = (arrayOfCheckboxes, settingFunction, event) =>{
         if(event.target.checked){
             settingFunction([...arrayOfCheckboxes, event.target.value])
@@ -35,14 +41,14 @@ export const Form = ({setArrayOfRecipes, setNextLink}) =>{
             settingFunction(arrayOfCheckboxes.filter(item => item !== event.target.value))
         }
     }
-    // funkcja zmieniająca state na true false pozwalazjąca pokazać lub ukryć element
+    // function for making element visible or invisible - changing true or false
     const handleToggleFormElementWindow = (settingFunction, stateData) => {
         settingFunction(!stateData);
     }
+    // function for changing string input value
     const changeFormStringData = (settingFunction, event) =>{
         settingFunction(event.target.value)
     }
-
 
     return(
         <form className={"search_form row"} onSubmit={runBrowser}>
