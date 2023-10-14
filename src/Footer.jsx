@@ -1,5 +1,9 @@
 import React from "react";
 import {useState} from "react";
+import facebook from "../public/facebook.svg";
+import instagram from "../public/square-instagram.svg";
+import youtube from "../public/youtube.svg";
+import twitter from '../public/square-twitter.svg';
 
 export const Footer = () =>{
     const [newsletterValue, setNewsletterValue] = useState("")
@@ -11,10 +15,10 @@ export const Footer = () =>{
                     <div className={"footer-left"}>
                         <h4 className={"footer-left-heading"}>Fallow us</h4>
                         <div>
-                            <img src="../public/facebook.svg" alt={"facebook-icon"} className={"footer-icon"} />
-                            <img src='../public/square-twitter.svg' alt={"twitter-icon"} className={"footer-icon"} />
-                            <img src="../public/square-instagram.svg" alt={"instagram"} className={"footer-icon"} />
-                            <img src="../public/youtube.svg" alt={"youtube"} className={"footer-icon"} />
+                            <img src={facebook} alt={"facebook-icon"} className={"footer-icon"} />
+                            <img src={twitter} alt={"twitter-icon"} className={"footer-icon"} />
+                            <img src={instagram} alt={"instagram"} className={"footer-icon"} />
+                            <img src={youtube} alt={"youtube"} className={"footer-icon"} />
                         </div>
                     </div>
                     <form className={"footer-right"}>

@@ -1,4 +1,9 @@
 import React from "react";
+import chocolate from "../public/chocolate.jpg";
+import brocoli from "../public/brokoli.jpg";
+import awokado from "../public/awokado.jpg";
+import szafran from "../public/szafran.jpg";
+
 
 export const InterestingFactsOnEntry = () =>{
     return(
@@ -6,7 +11,7 @@ export const InterestingFactsOnEntry = () =>{
             <h2 className={"interestingFacts-sectionHeading"} >Some interesting facts</h2>
             <div className={"entryPage_interestingFacts-box"}>
                 <div className={"interestingFacts-element"}>
-                    <img className={"interestingFacts-img"} src="../public/chocolate.jpg" alt={"chocolate"}/>
+                    <img className={"interestingFacts-img"} src={chocolate} alt={"chocolate"}/>
                     <div className={"interestingFacts-text-Box"}>
                         <h3 className={"interestingFacts-heading"}>Chocolate</h3>
                         <p className={"interestingFacts-text"}>
@@ -31,7 +36,7 @@ export const InterestingFactsOnEntry = () =>{
             </div>
             <div className={"entryPage_interestingFacts-box"}>
                 <div className={"interestingFacts-element"}>
-                    <img className={"interestingFacts-img"} src="../public/brokoli.jpg" alt={"brokoli"}/>
+                    <img className={"interestingFacts-img"} src={brocoli} alt={"brokoli"}/>
                     <div className={"interestingFacts-text-Box"}>
                         <h3 className={"interestingFacts-heading"}>Broccoli</h3>
                         <p className={"interestingFacts-text"}>
@@ -44,7 +49,7 @@ export const InterestingFactsOnEntry = () =>{
             </div>
             <div className={"entryPage_interestingFacts-box"}>
                 <div className={"interestingFacts-element right-side-image"}>
-                    <img className={"interestingFacts-img"} src="../public/awokado.jpg" alt={"awokado"}/>
+                    <img className={"interestingFacts-img"} src={awokado} alt={"awokado"}/>
                     <div className={"interestingFacts-text-Box"}>
                         <h3 className={"interestingFacts-heading"}>Avocado</h3>
                         <p className={"interestingFacts-text"}>
@@ -57,7 +62,7 @@ export const InterestingFactsOnEntry = () =>{
             </div>
             <div className={"entryPage_interestingFacts-box"}>
                 <div className={"interestingFacts-element"}>
-                    <img className={"interestingFacts-img"} src="../public/szafran.jpg" alt={"szafran"}/>
+                    <img className={"interestingFacts-img"} src={szafran} alt={"szafran"}/>
                     <div className={"interestingFacts-text-Box"}>
                         <h3 className={"interestingFacts-heading"}>Saffron</h3>
                         <p className={"interestingFacts-text"}>
