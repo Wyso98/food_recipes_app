@@ -3,6 +3,7 @@ import chocolate from "../public/chocolate.jpg";
 import brocoli from "../public/brokoli.jpg";
 import awokado from "../public/awokado.jpg";
 import szafran from "../public/szafran.jpg";
+import garlic from "../public/garlic.jpg";
 
 
 export const InterestingFactsOnEntry = () =>{
@@ -24,7 +25,7 @@ export const InterestingFactsOnEntry = () =>{
             </div>
             <div className={"entryPage_interestingFacts-box"}>
                 <div className={"interestingFacts-element right-side-image"}>
-                    <img className={"interestingFacts-img"} src="../public/garlic.jpg" alt={"garlic"}/>
+                    <img className={"interestingFacts-img"} src={garlic} alt={"garlic"}/>
                     <div className={"interestingFacts-text-Box"}>
                         <h3 className={"interestingFacts-heading"}>Garlic</h3>
                         <p className={"interestingFacts-text"}>

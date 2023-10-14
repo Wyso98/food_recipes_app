@@ -4,6 +4,7 @@ import {getDataForID} from "./API/API-metods.jsx";
 import user from "../public/user-regular.svg";
 import utensils from "../public/utensils-solid.svg";
 import clock from "../public/clock-regular.svg";
+import burger from "../public/burger-solid.svg";
 
 
 
@@ -52,7 +53,7 @@ export const RecipePage = () =>{
                         : ""
                     }
                     <div className={"recipePage_infoBelow-element"}>
-                        <img className={"recipePage_infoBelow-icon"} src={"../public/burger-solid.svg"} alt={"burger image"}/>
+                        <img className={"recipePage_infoBelow-icon"} src={burger} alt={"burger image"}/>
                         <p>{recipeData.calories.toFixed(0)} calories</p>
                     </div>
                 </div>
