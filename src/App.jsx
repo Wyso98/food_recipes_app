@@ -4,8 +4,8 @@ import {HashRouter, Route, Routes} from "react-router-dom";
 import {EntryPage} from "./EntryPage.jsx";
 import {Navigation} from "./Navigation.jsx";
 import {SearchPage} from "./SearchPage.jsx";
-import {RecipeElement} from "./RecipeElement.jsx";
 import {RecipePage} from "./RecipePage.jsx";
+import background from "../public/background-image.png"
 
 function App() {
     const [arrayOfRecipes, setArrayOfRecipes] = useState([]);
@@ -16,7 +16,7 @@ function App() {
     return (
           <HashRouter>
               <Navigation/>
-              <div className={"pageBackground"}>
+              <div style={{backgroundImage:`url(${background})`}} className={"pageBackground"}>
                   <Routes>
                       <Route path={"/"} element={<EntryPage/>}/>
                       <Route path={"/searchForRecipe"} element={<SearchPage recipeCountOfSearch={recipeCountOfSearch} setRecipeCountOfSearch={setRecipeCountOfSearch} arrayOfRecipes={arrayOfRecipes}
