@@ -1,6 +1,10 @@
 import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import {getDataForID} from "./API/API-metods.jsx";
+import user from "../public/user-regular.svg";
+import utensils from "../public/utensils-solid.svg";
+import clock from "../public/clock-regular.svg";
+
 
 
 export const RecipePage = () =>{
@@ -35,14 +39,14 @@ export const RecipePage = () =>{
                 <div className={"recipePage_infoBelow"}>
                     <div className={"recipePage_infoBelow-element"}>
                         <div className={"recipePage_infoBelow-imageBox"} >
-                            <img className={"recipePage_infoBelow-icon"} src={"../public/user-regular.svg"} alt={"user icon"}/>
-                            <img className={"recipePage_infoBelow-icon"} src={"../public/utensils-solid.svg"} alt={"utensils icon"}/>
+                            <img className={"recipePage_infoBelow-icon"} src={user} alt={"user icon"}/>
+                            <img className={"recipePage_infoBelow-icon"} src={utensils} alt={"utensils icon"}/>
                         </div>
                         <p>{recipeData.yield}</p>
                     </div>
                     {Number(recipeData.totalTime) !== 0 ?
                         <div className={"recipePage_infoBelow-element"}>
-                            <img className={"recipePage_infoBelow-icon"} src={"../public/clock-regular.svg"} alt={"clock image"}/>
+                            <img className={"recipePage_infoBelow-icon"} src={clock} alt={"clock image"}/>
                             <p>{recipeData.totalTime}</p>
                          </div>
                         : ""
