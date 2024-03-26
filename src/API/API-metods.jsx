@@ -52,8 +52,6 @@ export const getData = (setCountRecipeAmount ,settingFunction, query = "", cuisi
 
 export const getDataInfiniteScroll = (link, settingFunction, nextLinkSetting) =>{
 
-    let test = []
-
     fetch(link, {
         method: "GET"
     })
