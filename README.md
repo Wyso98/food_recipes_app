@@ -1,6 +1,6 @@
 # App Food Profect
 
-This project is simple recipes browser. It use api: https://api.edamam.com/api/recipes/v2 to find recipes.
+This project is simple recipes browser. It use api: https://api.edamam.com/api/recipes/v2 to find recipes. The website is responsive and can be opened on various screen resolutions.
 
 In the "Home" tab, you can find a simple landing page with a header, interesting facts, and a footer. The "Go Up" button will take you to the top of the page.
 
